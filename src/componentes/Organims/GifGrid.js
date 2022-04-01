@@ -1,38 +1,23 @@
-import React, { useEffect, useState } from 'react'
-import useFetch from 'use-http'
-import Card from '../Molecules/Card'
+import React from "react";
+import Card from "../Molecules/Card";
+import { ContainerCard } from "./styles";
 
-
-export const GifGrid = () => {
-  const [character, setCharacter] = useState()
-  const [gifs, setGifs] = useState([])
-  const { response, loading, error, get } = useFetch('https://rickandmortyapi.com/api');
-
-  useEffect(() => {
-    initialLoad();
-  }, []) // componentDidMount
-  
-  const initialLoad = async () => {
-      const dataLoad  =await get('/character');
-      if(response.ok) setCharacter(dataLoad.results)
-  }
-  
+export const GifGrid = ({ listCharacters, loading, error, color }) => {
+  if (loading)
     return (
-        <>
-        {error && 'Error!'}
-        {loading && 'Loading...'}
-        <div style={{
-          display: 'flex',
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-        }}>
-
-        {
-          character?.map( todo => (
-            <Card {...todo}/> ))}
-            </div>
-
-            
-      </>
-  )
-}
+      <p>
+        Loading..{" "}
+        <progress className="progress is-small is-primary" max="100">
+          15%
+        </progress>
+      </p>
+    );
+  if (error) return <p>Error!</p>;
+  return (
+    <ContainerCard color={color}>
+      {listCharacters?.map((character) => (
+        <Card characterinfo={character} />
+      ))}
+    </ContainerCard>
+  );
+};

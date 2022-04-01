@@ -1,12 +1,12 @@
 import React from "react";
-import { GifGrid } from "./componentes/Organims/GifGrid";
+import { Home } from "./componentes/Pages/Home/home";
 
-export const GifMortysApp = () => {
+export const App = () => {
   return (
     <>
       <h2>The Rick and Morty API </h2>
       <hr />
-      <GifGrid />
+      <Home />
     </>
   );
 };

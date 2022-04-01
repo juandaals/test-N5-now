@@ -1,17 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {GifMortysApp} from './GifMortysApp';
+import React from "react";
+import ReactDOM from "react-dom";
+import { App } from "./App";
 
-import './index.css';
+import "./index.css";
 //import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-
-    <GifMortysApp/>,
-    
-  
-  document.getElementById('root')
-);
-
+ReactDOM.render(<App />, document.getElementById("root"));
 
 //reportWebVitals();
